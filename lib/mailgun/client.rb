@@ -11,7 +11,7 @@ module Mailgun
     end
 
     def send_message(options)
-      RestClient.post mailgun_url, options
+      RestClient::Resource.new(mailgun_url, verify_ssl: false).post(options)
     end
 
     def mailgun_url
